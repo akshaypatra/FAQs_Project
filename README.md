@@ -13,8 +13,9 @@ python  django-admin startapp faqs
 
 ### Installing all dependencies
 
-- pip3 install django djangorestframework django-ckeditor-5 django-redis googletrans==4.0.0-rc1
-
+```bash
+python pip3 install django djangorestframework django-ckeditor-5 django-redis googletrans==4.0.0-rc1
+```
 
 ## 2. Models Overview
 The FAQ model is designed to store frequently asked questions along with their translated versions in multiple languages. It supports rich text formatting for answers using CKEditor 5.
