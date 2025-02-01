@@ -5,16 +5,16 @@
 ### Creating Django project and and starting an app
 
 ```bash
-python django-admin startproject faq_project
-python cd faq_project
-python  django-admin startapp faqs
+django-admin startproject faq_project
+cd faq_project
+django-admin startapp faqs
 
 ```
 
 ### Installing all dependencies
 
 ```bash
-python pip3 install django djangorestframework django-ckeditor-5 django-redis googletrans==4.0.0-rc1
+pip3 install django djangorestframework django-ckeditor-5 django-redis googletrans==4.0.0-rc1
 ```
 
 ## 2. Models Overview
