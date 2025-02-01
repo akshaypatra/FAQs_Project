@@ -20,22 +20,17 @@ LANGUAGE_CHOICES = [
     ('ur', 'Urdu'),
     ('or', 'Odia'),
     ('as', 'Assamese'),
-    ('kok', 'Konkani'),
+    ('gom', 'Konkani'),
     ('mai', 'Maithili'),
     ('ne', 'Nepali'),
     ('sa', 'Sanskrit'),
     ('fr', 'French'),
     ('de', 'German'),
     ('es', 'Spanish'),
-    ('zh', 'Chinese'),
     ('ja', 'Japanese'),
     ('ru', 'Russian'),
     ('ar', 'Arabic'),
     ('it', 'Italian'),
-    ('pt', 'Portuguese'),
-    ('ko', 'Korean'),
-    ('tr', 'Turkish'),
-    ('nl', 'Dutch'),
 ]
 
 class FAQ(models.Model):
