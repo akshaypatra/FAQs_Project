@@ -77,3 +77,32 @@ The views use Django REST Framework’s ModelViewSet to provide CRUD operations 
     - Example:
         - GET /api/faqs/1/?lang=bn
     - Fetches FAQ with Bengali translation.
+
+
+## 4. Test cases
+
+This test case is designed to validate the functionality of the FAQ model, specifically the translation feature. Here's a breakdown:
+
+### **Test Case Class**
+- **`FAQModelTest`**:
+  Inherits from `django.test.TestCase`, which allows for testing Django models and functionality.
+
+#### **setUp Method**
+- **Purpose**: Sets up the initial data required for the test.
+- **Implementation**:  
+  Creates an instance of the `FAQ` model with the following attributes:
+  - `question`: "Hello"
+  - `answer`: "This is a test FAQ"
+  - `language`: 'en' (English)
+
+#### **test_translation Method**
+- **Purpose**: Verifies that the translation functionality of the `FAQ` model works as expected.
+- **Implementation**:
+  - Calls `get_translated_question('hi')` to fetch the Hindi translation of the question.
+  - Asserts that the translation is not `None` (indicating that the translation is available).
+
+### **Test Execution**
+To run the test, use the following command:
+
+```bash
+python manage.py test faqs
