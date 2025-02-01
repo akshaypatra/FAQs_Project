@@ -4,9 +4,12 @@
 
 ### Creating Django project and and starting an app
 
-- django-admin startproject faq_project
-- cd faq_project
-- django-admin startapp faqs
+```bash
+python django-admin startproject faq_project
+python cd faq_project
+python  django-admin startapp faqs
+
+```
 
 ### Installing all dependencies
 
@@ -106,3 +109,140 @@ To run the test, use the following command:
 
 ```bash
 python manage.py test faqs
+```
+
+## 5 . API testing  
+
+### 1. FAQ API Endpoints
+
+### **GET /faqs/**
+- **Description**: Fetch a list of all FAQs.
+- **HTTP Method**: `GET`
+- **Parameters**: 
+  - `lang` (optional): The language code for the FAQ (e.g., `lang=hi` for Hindi or `lang=en` for English).
+- **Response**:
+  - **200 OK**: A list of all FAQs in the specified language.
+  - **Example**:
+    ```json
+    [
+      {
+        "id": 1,
+        "question": "What is Django?",
+        "answer": "Django is a Python-based web framework.",
+        "language": "en"
+      },
+      {
+        "id": 2,
+        "question": "क्या है Django?",
+        "answer": "Django एक पायथन आधारित वेब फ्रेमवर्क है।",
+        "language": "hi"
+      }
+    ]
+    ```
+
+### **GET /faqs/{id}/**
+- **Description**: Fetch a specific FAQ by its ID.
+- **HTTP Method**: `GET`
+- **Parameters**:
+  - `id`: The ID of the FAQ to fetch.
+  - `lang` (optional): The language code for the FAQ response.
+- **Response**:
+  - **200 OK**: A specific FAQ.
+  - **Example**:
+    ```json
+    {
+      "id": 1,
+      "question": "What is Django?",
+      "answer": "Django is a Python-based web framework.",
+      "language": "en"
+    }
+    ```
+
+### **POST /faqs/**
+- **Description**: Create a new FAQ.
+- **HTTP Method**: `POST`
+- **Request Body**:
+  - `question` (string): The question for the FAQ.
+  - `answer` (string): The answer for the FAQ.
+  - `language` (string): The language code for the FAQ (e.g., `en`, `hi`).
+- **Response**:
+  - **201 Created**: The FAQ has been created successfully.
+  - **Example**:
+    ```json
+    {
+      "id": 3,
+      "question": "What is Python?",
+      "answer": "Python is a programming language.",
+      "language": "en"
+    }
+    ```
+
+### **GET /faqs/translations/{faq_id}/**
+- **Description**: Retrieve translations for a specific FAQ.
+- **HTTP Method**: `GET`
+- **Parameters**:
+  - `faq_id`: The ID of the FAQ to fetch translations for.
+- **Response**:
+  - **200 OK**: A list of translations for the FAQ.
+  - **Example**:
+    ```json
+    [
+      {
+        "language": "hi",
+        "translated_question": "Python क्या है?"
+      },
+      {
+        "language": "fr",
+        "translated_question": "Qu'est-ce que Python?"
+      }
+    ]
+    ```
+
+### **POST /faqs/{faq_id}/translations/**
+- **Description**: Create or update a translation for a specific FAQ.
+- **HTTP Method**: `POST`
+- **Request Body**:
+  - `language` (string): The language code for the translation (e.g., `hi`, `fr`).
+  - `translated_question` (string): The translated question text.
+- **Response**:
+  - **200 OK**: The translation has been created or updated successfully.
+  - **Example**:
+    ```json
+    {
+      "language": "hi",
+      "translated_question": "Python क्या है?"
+    }
+    ```
+
+---
+
+### 2. API URL Summary
+
+| **Endpoint**                          | **Description**                                    | **Method**  | **Parameters**                              |
+|---------------------------------------|----------------------------------------------------|-------------|---------------------------------------------|
+| `/faqs/`                              | Get a list of all FAQs.                           | `GET`       | `lang` (optional)                          |
+| `/faqs/{id}/`                         | Get an individual FAQ by ID.                      | `GET`       | `id` (required), `lang` (optional)         |
+| `/faqs/`                              | Create a new FAQ.                                 | `POST`      | `question`, `answer`, `language` (required) |
+| `/faqs/translations/{faq_id}/`        | Get translations for a specific FAQ.              | `GET`       | `faq_id` (required)                        |
+| `/faqs/{faq_id}/translations/`        | Create or update translation for a FAQ.           | `POST`      | `language`, `translated_question` (required) |
+
+---
+
+## 3. Example URL Usage
+
+- **To get all FAQs in English**:  
+  `GET /faqs/?lang=en`
+
+- **To get FAQ with ID `1` in Hindi**:  
+  `GET /faqs/1/?lang=hi`
+
+- **To create a new FAQ**:  
+  ```json
+  POST /faqs/
+  {
+      "question": "What is Django?",
+      "answer": "Django is a Python-based web framework.",
+      "language": "en"
+  }
+
+
