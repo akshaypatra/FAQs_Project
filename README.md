@@ -1,5 +1,7 @@
 # FAQ project details
 
+The FAQ Management System is an API that allows users to manage Frequently Asked Questions (FAQs) across multiple languages. The system provides an easy-to-use interface for creating, updating, and retrieving FAQs and their translations, making it an essential tool for websites or applications that aim to offer multilingual support
+
 ## 1. Setting up Django project
 
 ### Creating Django project and and starting an app
