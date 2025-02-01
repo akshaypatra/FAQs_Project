@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'ckeditor',
+    "django_ckeditor_5",
     'faqs',
 ]
 
@@ -130,5 +130,13 @@ CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
         "LOCATION": "redis://127.0.0.1:6379/1",
+    }
+}
+
+CKEDITOR_5_CONFIGS = {
+    "default": {
+        "toolbar": ["bold", "italic", "underline", "|", "bulletedList", "numberedList", "|", "link"],
+        "height": 300,
+        "width": "100%",
     }
 }
